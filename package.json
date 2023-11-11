@@ -1,7 +1,7 @@
 {
   "name": "vue3-leaflet-map-component",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "keywords": [
     "vue3-leaflet-map",
     "vue3Leaflet",
@@ -37,5 +37,10 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vue-tsc": "^1.8.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hecongyuan/vue3-leaflet-map-component"
+  },
+  "homepage": "https://github.com/hecongyuan/vue3-leaflet-map-component#readme"
 }
