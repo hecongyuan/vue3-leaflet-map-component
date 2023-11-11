@@ -10,3 +10,7 @@ npm install vue3-leaflet-map-component
 ```
 import { LsMap, LsMapDivMarker, LsMapGeo, LsMapMarker, LsMapPopup } from 'vue3-leaflet-map-component';
 ```
+
+## 作者
+微信:13541779726
+欢迎交流
