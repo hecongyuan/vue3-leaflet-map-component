@@ -1,3 +1,0 @@
-*.html linguist-language=vue
-*.vue linguist-language=vue
-*.ts linguist-language=typescript
