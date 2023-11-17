@@ -1,7 +1,7 @@
 {
   "name": "vue3-leaflet-map-component",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "vue3-leaflet-map",
     "vue3Leaflet",
@@ -19,24 +19,31 @@
   "files": [
     "lib"
   ],
-  "main": "lib/vue3-leaflet-map.umd.js",
-  "module": "lib/vue3-leaflet-map.es.js",
+  "main": "lib/vue3-Leaflet.js",
+  "module": "lib/vue3-Leaflet.js",
   "exports": {
     "./lib/style.css": "./lib/style.css",
-    "import": "./lib/vue3-leaflet-map.es.js",
-    "require": "./lib/vue3-leaflet-map.umd.js"
+    "import": "./lib/vue3-Leaflet.js",
+    "require": "./lib/vue3-Leaflet.umd.cjs"
   },
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.3.4",
+    "@types/node": "^20.9.1",
+    "axios": "^1.6.2",
     "leaflet": "^1.9.4",
-    "leaflet-minimap": "^3.6.1"
+    "leaflet-minimap": "^3.6.1",
+    "mitt": "^3.0.1",
+    "vue": "^3.3.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "less": "^4.2.0",
+    "sass": "^1.69.5",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vue-tsc": "^1.8.5"
+    "vite-plugin-windicss": "^1.9.1",
+    "vue-tsc": "^1.8.5",
+    "windicss": "^3.5.6"
   },
   "repository": {
     "type": "git",

@@ -12,7 +12,7 @@
 <script setup name="ls-map-popup" lang="ts">
 import { ref, inject, onMounted, onActivated, watch } from 'vue'
 import L from 'leaflet'
-import emitter from '@/libs/mitt'
+import emitter from '../../utils/mitt'
 let lsMapContainer: unknown = null
 const slotRef = ref(null) //插槽内的真实dom
 const emits = defineEmits(['close', 'click'])

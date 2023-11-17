@@ -1,13 +1,14 @@
 import vue from '@vitejs/plugin-vue';
+import { resolve } from "path";
 import { defineConfig } from 'vite';
-const { resolve } = require('path');
+import WindiCSS from 'vite-plugin-windicss';
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(),  WindiCSS(),],
   build: {
 		outDir: 'lib',
 		lib: {
-			entry: resolve(__dirname, 'packages/index.js'), //指定组件编译入口文件
+			entry: resolve(__dirname, 'packages/index.ts'), //指定组件编译入口文件
 			name: 'Vue3Leaflet',
 			fileName: 'vue3-Leaflet',
 		},//库编译模式配置
