@@ -1,7 +1,7 @@
 {
   "name": "vue3-leaflet-map-component",
   "private": false,
-  "version": "0.0.6",
+  "version": "0.0.7",
   "keywords": [
     "vue3-leaflet-map",
     "vue3Leaflet",
@@ -23,8 +23,10 @@
   "module": "lib/vue3-Leaflet.js",
   "exports": {
     "./lib/style.css": "./lib/style.css",
-    "import": "./lib/vue3-Leaflet.js",
-    "require": "./lib/vue3-Leaflet.umd.cjs"
+    ".": {
+      "import": "./lib/vue3-Leaflet.js",
+      "require": "./lib/vue3-Leaflet.umd.cjs"
+    }
   },
   "license": "MIT",
   "dependencies": {
