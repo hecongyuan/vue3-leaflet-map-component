@@ -13,4 +13,6 @@ import { LsMap, LsMapDivMarker, LsMapGeo, LsMapMarker, LsMapPopup } from 'vue3-l
 
 ## 作者
 微信:13541779726
+email:2851212973@qq.com
+gmail:h285121973@gmain.com
 欢迎交流
