@@ -1,7 +1,7 @@
 {
   "name": "vue3-leaflet-map-component",
   "private": false,
-  "version": "0.0.7",
+  "version": "0.0.12",
   "keywords": [
     "vue3-leaflet-map",
     "vue3Leaflet",

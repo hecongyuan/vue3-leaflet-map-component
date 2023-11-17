@@ -1,5 +1,5 @@
 <script setup name="ls-map-marker" lang="ts">
-import { ref, inject, onMounted, onActivated } from 'vue'
+import { ref, inject, onMounted, onActivated, watch } from 'vue'
 import L from 'leaflet'
 
 let lsMapContainer: unknown = null
@@ -30,38 +30,39 @@ const emits = defineEmits(['mouseout', 'mouseover', 'click'])
 const index = ref(1)
 onActivated(() => {
   lsMapContainer = inject('lsMapContainer')
-  console.log('marker inject onActivated', lsMapContainer)
-  console.log('我的定位数据', props.position)
+  //console.log('marker inject onActivated', lsMapContainer)
+  //console.log('我的定位数据', props.position)
   while (lsMapContainer && index.value) {
-    console.log('marker inject onMounted',index.value, lsMapContainer)
+    //console.log('marker inject onMounted',index.value, lsMapContainer)
     if (props.position[0] && props.position[1]) {
       initMarker()
     }
-    index.value =0
+    index.value = 0
     break
   }
 })
 
 onMounted(() => {
   lsMapContainer = inject('lsMapContainer')
-  console.log('marker inject onMounted', lsMapContainer)
-  console.log('我的定位数据', props.position)
+  //console.log('marker inject onMounted', lsMapContainer)
+  //console.log('我的定位数据', props.position)
   while (lsMapContainer && index.value) {
-    console.log('marker inject onMounted',index.value, lsMapContainer)
+    //console.log('marker inject onMounted',index.value, lsMapContainer)
     if (props.position[0] && props.position[1]) {
       initMarker()
     }
-    index.value =0
+    index.value = 0
   }
 })
 
+let marker
 const initMarker = () => {
   let icon = L.icon({
     iconUrl: iconImg[`${props.iconType}`],
     iconSize: props.iconType == 'currentCamera' ? [46, 46] : [29, 46]
   })
 
-  let marker = L.marker(props.position, {
+  marker = L.marker(props.position, {
     icon
   }).addTo(lsMapContainer)
 
@@ -75,4 +76,15 @@ const initMarker = () => {
     emits('click', props.target)
   })
 }
+
+watch(
+  props,
+  () => {
+    console.log('909')
+    if (marker) {
+      marker.setLatLng(props.position)
+    }
+  },
+  { deep: true }
+)
 </script>

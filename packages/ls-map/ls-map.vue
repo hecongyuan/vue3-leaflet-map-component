@@ -22,10 +22,10 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  tk: '',
+  tk: 'e6c84be5b26569906eebbe47559d15b0',
   layers: [
-    'http://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk={tk}',
-    'http://t0.tianditu.gov.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk={tk}'
+    'https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk={tk}',
+    'https://t0.tianditu.gov.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk={tk}'
   ], //标准地图+注记
   showMiniMap: true,
   showScale: true,
@@ -35,21 +35,7 @@ const props = withDefaults(defineProps<Props>(), {
     hideText: 'hideText',
     showText: 'showText'
   },
-  options: {
-    center: [28.39864879699246, 105.51818847656251], //初始地图中心
-    zoom: 9, //初始缩放等级
-    maxZoom: 18, //最大缩放等级
-    minZoom: 9, //最小缩放等级
-    zoomControl: false,
-    maxBounds: [
-      [50, 104.76819724072494],
-      [50, 106.74547092110966],
-      [27.58863216796008, 104.61990171469608],
-      [27.576460076262716, 106.72075500010487]
-    ],
-    copyRight:
-      '&copy; <a href="http://www.bddigi.com/index.html#banner">成都磊数</a>'
-  }
+  options: {}
 })
 const emits = defineEmits(['ready', 'click'])
 
@@ -59,7 +45,7 @@ onMounted(() => {
 
 let lsMapContainer
 const initMap = () => {
-  console.log('props', props.options)
+  //console.log('props', props.options)
   //渲染大地图
   const layers = props.layers.map(url => L.tileLayer(url, { tk: props.tk }))
   const layerGroup = L.layerGroup(layers)
@@ -68,22 +54,22 @@ const initMap = () => {
   lsMapContainer = L.map(
     'lsMapContainer',
     Object.assign(
-      { ...props.options, layers: [layerGroup] },
       {
         center: [28.39864879699246, 105.51818847656251], //初始地图中心
         zoom: 9, //初始缩放等级
         maxZoom: 18, //最大缩放等级
         minZoom: 9, //最小缩放等级
         zoomControl: false,
-        maxBounds: [
-          [50, 104.76819724072494],
-          [50, 106.74547092110966],
-          [27.58863216796008, 104.61990171469608],
-          [27.576460076262716, 106.72075500010487]
-        ],
+        // maxBounds: [
+        //   [50, 104.76819724072494],
+        //   [50, 106.74547092110966],
+        //   [27.58863216796008, 104.61990171469608],
+        //   [27.576460076262716, 106.72075500010487]
+        // ],
         copyRight:
           '&copy; <a href="http://www.bddigi.com/index.html#banner">成都磊数</a>'
-      }
+      },
+      { ...props.options, layers: [layerGroup] }
     )
   )
 

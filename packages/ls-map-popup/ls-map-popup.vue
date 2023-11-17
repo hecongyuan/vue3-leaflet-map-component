@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
     minWidth: '30vw',
     closeButton: false,
     closeOnClick: false,
-    className: '!m-0'
+    className: '!m-0',
   }, //默认没有关闭按钮，默认点击地图不关闭
   isShow: true,
   position: [],
@@ -39,7 +39,7 @@ const index = ref(1)
 onActivated(() => {
   lsMapContainer = inject('lsMapContainer')
   while (lsMapContainer && index.value && props.isShow) {
-    console.log('marker inject onMounted', lsMapContainer)
+    console.log('popup inject onMounted', lsMapContainer)
     if (props.position[0] && props.position[1]) {
       initPopup()
     }
@@ -49,9 +49,9 @@ onActivated(() => {
 })
 onMounted(() => {
   lsMapContainer = inject('lsMapContainer')
-  console.log('slotRef', lsMapContainer, slotRef.value)
+  //console.log('slotRef', lsMapContainer, slotRef.value)
   while (lsMapContainer && index.value && props.isShow) {
-    console.log('marker inject onMounted', lsMapContainer)
+    //console.log('marker inject onMounted', lsMapContainer)
     if (props.position[0] && props.position[1]) {
       initPopup()
     }
@@ -70,7 +70,7 @@ const initPopup = () => {
 }
 
 const handleClose = () => {
-  console.log('关闭事件')
+  //console.log('关闭事件')
   popup.value.close()
   emits['click']
   emits['close']
@@ -78,7 +78,7 @@ const handleClose = () => {
 }
 
 watch(props, newValue => {
-  console.log('issssssssssss', newValue)
+  //console.log('issssssssssss', newValue)
   initPopup()
 })
 

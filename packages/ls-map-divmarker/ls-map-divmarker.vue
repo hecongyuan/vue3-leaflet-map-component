@@ -18,10 +18,10 @@ const emits = defineEmits(['mouseout', 'mouseover', 'click'])
 const index = ref(1)
 onActivated(() => {
   lsMapContainer = inject('lsMapContainer')
-  console.log('inject', lsMapContainer)
+  //console.log('inject', lsMapContainer)
 
   while (lsMapContainer && index.value) {
-    console.log('marker inject onMounted', lsMapContainer)
+    //console.log('marker inject onMounted', lsMapContainer)
     if (props.position[0] && props.position[1] && props.number) {
       initMarker()
     }
@@ -31,9 +31,9 @@ onActivated(() => {
 })
 onMounted(() => {
   lsMapContainer = inject('lsMapContainer')
-  console.log('我是divmarker', lsMapContainer)
+  //console.log('我是divmarker', lsMapContainer)
   while (lsMapContainer && index.value && props.number) {
-    console.log('marker inject onMounted', lsMapContainer)
+    //console.log('marker inject onMounted', lsMapContainer)
     if (props.position[0] && props.position[1]) {
       initMarker()
     }
