@@ -16,9 +16,12 @@ import { LsMap, LsMapDivMarker, LsMapGeo, LsMapMarker, LsMapPopup } from 'vue3-l
 welcome communication with me!
 
 phone:+86 13541779726
+
 wechat:hecongyuan2023
+
 email:2851212973@qq.com
-gmail:h285121973@gmain.com
+
+gmail:h285121973@gmail.com
 
 
 
