@@ -5,106 +5,100 @@
   </div>
 </template>
 <script setup name="ls-map" lang="ts">
-import { onMounted, provide } from 'vue'
-import L from 'leaflet'
-import MiniMap from 'leaflet-minimap'
-import 'leaflet/dist/leaflet.css'
-import { cloneDeep } from 'lodash'
+import { onMounted, provide } from "vue";
+import L from "leaflet";
+import MiniMap from "leaflet-minimap";
+import "leaflet/dist/leaflet.css";
+import { cloneDeep } from "lodash";
 
 interface Props {
-  tk?: string //地图key
-  layers?: string[] // 地图图层
-  showMiniMap?: boolean // 缩放地图
-  miniMapOptions: Record<string, any> //迷你地图选项
-  showScale?: boolean // 比例尺
-  options?: Record<string, any> //地图选项,leaflet的options
-  copyRight?: string //版权信息
+  tk?: string; //地图key
+  layers?: string[]; // 地图图层
+  showMiniMap?: boolean; // 缩放地图
+  miniMapOptions?: Record<string, any>; //迷你地图选项
+  showScale?: boolean; // 比例尺
+  options?: Record<string, any>; //地图选项,leaflet的options
+  copyRight?: string; //版权信息
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  tk: 'e6c84be5b26569906eebbe47559d15b0',
+  tk: "e6c84be5b26569906eebbe47559d15b0",
   layers: [
-    'https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk={tk}',
-    'https://t0.tianditu.gov.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk={tk}'
+    "https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk={tk}",
+    "https://t0.tianditu.gov.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk={tk}",
   ], //标准地图+注记
   showMiniMap: true,
   showScale: true,
   miniMapOptions: {
     toggleDisplay: true,
     zoomAnimation: true,
-    hideText: 'hideText',
-    showText: 'showText'
+    hideText: "hideText",
+    showText: "showText",
   },
-  options: {}
-})
-const emits = defineEmits(['ready', 'click'])
+  options: {},
+});
+const emits = defineEmits(["ready", "click"]);
 
 onMounted(() => {
-  initMap()
-})
+  initMap();
+});
 
-let lsMapContainer
+let lsMapContainer;
 const initMap = () => {
   //console.log('props', props.options)
   //渲染大地图
-  const layers = props.layers.map(url => L.tileLayer(url, { tk: props.tk }))
-  const layerGroup = L.layerGroup(layers)
+  const layers = props.layers.map((url) => L.tileLayer(url, { tk: props.tk }));
+  const layerGroup = L.layerGroup(layers);
 
   //容器
   lsMapContainer = L.map(
-    'lsMapContainer',
+    "lsMapContainer",
     Object.assign(
       {
         center: [28.39864879699246, 105.51818847656251], //初始地图中心
         zoom: 9, //初始缩放等级
-        maxZoom: 18, //最大缩放等级
-        minZoom: 9, //最小缩放等级
+        // maxZoom: 18, //最大缩放等级
+        // minZoom: 9, //最小缩放等级
         zoomControl: false,
-        // maxBounds: [
-        //   [50, 104.76819724072494],
-        //   [50, 106.74547092110966],
-        //   [27.58863216796008, 104.61990171469608],
-        //   [27.576460076262716, 106.72075500010487]
-        // ],
         copyRight:
-          '&copy; <a href="http://www.bddigi.com/index.html#banner">成都磊数</a>'
+          '&copy; <a href="http://www.bddigi.com/index.html#banner">285121973@qq.com</a>',
       },
       { ...props.options, layers: [layerGroup] }
     )
-  )
+  );
 
-  lsMapContainer.on('click', e => {
-    emits('click', e)
-  })
+  lsMapContainer.on("click", (e) => {
+    emits("click", e);
+  });
 
   if (props.showScale) {
     //比例尺
-    L.control.scale().addTo(lsMapContainer)
+    L.control.scale().addTo(lsMapContainer);
   }
   if (props.showMiniMap) {
     //缩放预览
-    const miniLayers = props.layers.map(url =>
+    const miniLayers = props.layers.map((url) =>
       L.tileLayer(url, { tk: props.tk })
-    )
+    );
     //缩放地图
-    const miniLayerGroup = L.layerGroup(miniLayers)
-    new MiniMap(miniLayerGroup, props.miniMapOptions).addTo(lsMapContainer)
+    const miniLayerGroup = L.layerGroup(miniLayers);
+    new MiniMap(miniLayerGroup, props.miniMapOptions).addTo(lsMapContainer);
     //缩放按钮
-    L.control.zoom({ position: 'bottomright' }).addTo(lsMapContainer)
+    L.control.zoom({ position: "bottomright" }).addTo(lsMapContainer);
   }
 
   //右下角版权信息
-  L.tileLayer('', {
+  L.tileLayer("", {
     maxZoom: 19,
-    attribution: props.copyRight
-  }).addTo(lsMapContainer)
-  provide('lsMapContainer', lsMapContainer)
-  emits('ready', lsMapContainer)
-}
+    attribution: props.copyRight,
+  }).addTo(lsMapContainer);
+  provide("lsMapContainer", lsMapContainer);
+  emits("ready", lsMapContainer);
+};
 
 defineExpose({
-  lsMapContainer
-})
+  lsMapContainer,
+});
 </script>
 
 <style scoped lang="scss">

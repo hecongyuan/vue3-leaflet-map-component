@@ -19,31 +19,39 @@
   "files": [
     "lib"
   ],
-  "main": "lib/vue3-Leaflet.js",
-  "module": "lib/vue3-Leaflet.js",
+  "main": "lib/vue3-leaflet-map-component.js",
+  "module": "lib/vue3-leaflet-map-component.js",
   "exports": {
     "./lib/style.css": "./lib/style.css",
     ".": {
-      "import": "./lib/vue3-Leaflet.js",
-      "require": "./lib/vue3-Leaflet.umd.cjs"
+      "import": "./lib/vue3-leaflet-map-component.js",
+      "require": "./lib/vue3-leaflet-map-component.umd.cjs"
     }
   },
   "license": "MIT",
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@types/node": "^20.9.1",
+    "@vueuse/core": "^10.6.1",
     "axios": "^1.6.2",
+    "element-ui-plus": "^1.0.0",
     "leaflet": "^1.9.4",
     "leaflet-minimap": "^3.6.1",
     "mitt": "^3.0.1",
-    "vue": "^3.3.8"
+    "path": "^0.12.7",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
     "less": "^4.2.0",
+    "lodash": "^4.17.21",
     "sass": "^1.69.5",
-    "typescript": "^5.0.2",
+    "typescript": "^5.3.2",
+    "unplugin-auto-import": "^0.16.7",
+    "unplugin-vue-components": "^0.25.2",
     "vite": "^4.4.5",
-    "vite-plugin-windicss": "^1.9.1",
+    "vite-plugin-windicss": "^1.9.2",
     "vue-tsc": "^1.8.5",
     "windicss": "^3.5.6"
   },

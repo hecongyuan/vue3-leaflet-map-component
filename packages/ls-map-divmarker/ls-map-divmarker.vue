@@ -4,9 +4,9 @@ import L from 'leaflet'
 
 let lsMapContainer: unknown = null
 interface Props {
-  target?: Record<string, any>
-  number?: number
-  position: [number, number]
+  target?: Record<string, any>//数据
+  number?: number//消息数据
+  position: [number, number]//位置
 }
 
 const props = withDefaults(defineProps<Props>(), {

@@ -4,11 +4,9 @@ import L from 'leaflet'
 
 let lsMapContainer: unknown = null
 interface Props {
-  target?: Record<string, any>
-  iconType?: string
-  ismessage?: boolean
-  position: [number, number]
-  options?: Record<string, any>
+  target?: Record<string, any>//数据
+  iconType?: string//图标类型
+  position: [number, number]//位置
 }
 
 const iconImg = {
@@ -20,9 +18,7 @@ const iconImg = {
 }
 const props = withDefaults(defineProps<Props>(), {
   iconType: 'camera',
-  ismessage: false,
   position: [0, 0],
-  options: {},
   target: {}
 })
 const emits = defineEmits(['mouseout', 'mouseover', 'click'])

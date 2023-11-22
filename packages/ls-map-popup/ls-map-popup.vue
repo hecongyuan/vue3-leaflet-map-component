@@ -18,9 +18,9 @@ const slotRef = ref(null) //插槽内的真实dom
 const emits = defineEmits(['close', 'click'])
 interface Props {
   position: [number, number] //纬度，经度
-  target?: Record<string, any>
-  options?: Record<string, any>
-  isShow?: boolean
+  target?: Record<string, any>//数据
+  options?: Record<string, any>//选项
+  isShow?: boolean//显示
 }
 
 const props = withDefaults(defineProps<Props>(), {
