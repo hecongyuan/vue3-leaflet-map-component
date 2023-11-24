@@ -8,7 +8,10 @@ const baseColors = {
   green: '#00FF00',
   skyBlue: '#0EF2F4',
   primary: '#032E59',
-  red: '#ff0000'
+  red: '#ff0000',
+  white: '#ffffff',
+  black: '#000000',
+  gray: '#808080',
 }
 
 // 字体颜色

@@ -60,8 +60,7 @@ const initMap = () => {
         // maxZoom: 18, //最大缩放等级
         // minZoom: 9, //最小缩放等级
         zoomControl: false,
-        copyRight:
-          '&copy; <a href="http://www.bddigi.com/index.html#banner">285121973@qq.com</a>',
+        copyRight: "&copy; hecongyuan",
       },
       { ...props.options, layers: [layerGroup] }
     )
@@ -106,5 +105,4 @@ defineExpose({
   border: 1px solid rgb(97, 97, 97);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
-/* scoped 使用得定义的样式只在本页面内生效  */
 </style>
