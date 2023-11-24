@@ -2,6 +2,10 @@
 
 该项目为vue3+leaflet组件，欢迎一起加入继续完善.
 
+## 运行案例(run example)
+```
+yarn dev
+```
 ## 安装(install)
 
 npm install vue3-leaflet-map-component
